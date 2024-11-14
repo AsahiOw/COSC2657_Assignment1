@@ -24,8 +24,7 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        gameController = new GameController();
-
+        gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         initializeViews();
         setupClickListeners();
         loadCurrentSettings();

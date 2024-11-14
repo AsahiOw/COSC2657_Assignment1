@@ -93,7 +93,7 @@ public class ResultsActivity extends AppCompatActivity {
         Button unansweredButton = dialogView.findViewById(R.id.unansweredButton);
 
         // Enable/disable unanswered questions button
-        boolean hasUnanswered = new GameController().hasUnansweredQuestions();
+        boolean hasUnanswered = new GameController(getFilesDir().getAbsolutePath(), this).hasUnansweredQuestions();
         unansweredButton.setEnabled(hasUnanswered);
         unansweredButton.setAlpha(hasUnanswered ? 1.0f : 0.5f);
 

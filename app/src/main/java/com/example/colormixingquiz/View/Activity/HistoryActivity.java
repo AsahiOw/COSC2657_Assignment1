@@ -20,8 +20,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        gameController = new GameController();
-
+        gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         initializeViews();
         setupClickListeners();
         displayStatistics();

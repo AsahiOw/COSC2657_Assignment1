@@ -1,9 +1,11 @@
 package com.example.colormixingquiz.Controller;
 
+import android.content.Context;
 import com.example.colormixingquiz.Model.Data.Question;
 import com.example.colormixingquiz.Model.Repository.QuestionRepository;
 import com.example.colormixingquiz.View.Fragment.GamePreferences;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,18 +18,41 @@ public class GameController {
     private int currentQuestionIndex;
     private int correctAnswers;
     private boolean gameInProgress;
+    private String baseDir;
+    private Context mContext;  // Added Context field
 
-    public GameController() {
-        repository = QuestionRepository.getInstance();
+    public GameController(String baseDir, Context context) {
+        this.baseDir = baseDir;
+        this.mContext = context.getApplicationContext();  // Store the application context
+        repository = QuestionRepository.getInstance(mContext);
         currentGameQuestions = new ArrayList<>();
         currentQuestionIndex = 0;
         correctAnswers = 0;
         gameInProgress = false;
+        loadGameState();
+    }
+
+    private void loadGameState() {
+        if (repository != null) {
+            GamePreferences.restoreQuestionState(mContext, repository.getAllQuestions());
+            if (GamePreferences.hasGameInProgress(mContext)) {
+                GamePreferences.GameProgress progress = GamePreferences.getGameProgress(mContext);
+                currentQuestionIndex = progress.currentQuestion;
+                correctAnswers = progress.correctAnswers;
+                gameInProgress = true;
+            }
+        }
+    }
+
+    private void saveGameState() {
+        if (gameInProgress) {
+            GamePreferences.saveGameState(mContext, currentGameQuestions, currentQuestionIndex, correctAnswers);
+        }
     }
 
     public void startNewGame(boolean onlyUnanswered) {
         if (repository == null) {
-            repository = QuestionRepository.getInstance();
+            repository = QuestionRepository.getInstance(mContext);
         }
 
         if (onlyUnanswered) {
@@ -45,11 +70,12 @@ public class GameController {
         currentQuestionIndex = 0;
         correctAnswers = 0;
         gameInProgress = true;
+        saveGameState();
     }
 
     public void resumeGame(GamePreferences.GameProgress progress) {
         if (repository == null) {
-            repository = QuestionRepository.getInstance();
+            repository = QuestionRepository.getInstance(mContext);
         }
 
         // Load the full question set
@@ -64,6 +90,7 @@ public class GameController {
         currentQuestionIndex = Math.min(progress.currentQuestion, currentGameQuestions.size() - 1);
         correctAnswers = progress.correctAnswers;
         gameInProgress = true;
+        saveGameState();
     }
 
     public Question getCurrentQuestion() {
@@ -119,6 +146,7 @@ public class GameController {
         if (isCorrect) {
             current.setAnswered(true);
             correctAnswers++;
+            saveGameState();
         }
         return isCorrect;
     }
@@ -126,6 +154,7 @@ public class GameController {
     public void nextQuestion() {
         if (currentQuestionIndex < currentGameQuestions.size()) {
             currentQuestionIndex++;
+            saveGameState();
         }
     }
 
@@ -155,10 +184,16 @@ public class GameController {
 
     public void endGame() {
         gameInProgress = false;
+        GamePreferences.clearGameProgress(mContext);
     }
 
     public void resetAllAnswers() {
         repository.resetAllAnswers();
+        GamePreferences.clearGameProgress(mContext);
+    }
+
+    public void onPause() {
+        saveGameState();
     }
 
     // Helper method to get statistics for the history page
