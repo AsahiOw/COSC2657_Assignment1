@@ -12,6 +12,7 @@ public class HistoryActivity extends AppCompatActivity {
     private ImageButton backButton;
     private TextView statsText;
     private TextView percentageText;
+    private TextView messageText;
     private ProgressBar progressBar;
     private GameController gameController;
 
@@ -20,9 +21,15 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         initializeViews();
         setupClickListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Create a new GameController instance to ensure fresh data
+        gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         displayStatistics();
     }
 
@@ -30,6 +37,7 @@ public class HistoryActivity extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         statsText = findViewById(R.id.statsText);
         percentageText = findViewById(R.id.percentageText);
+        messageText = findViewById(R.id.messageText);
         progressBar = findViewById(R.id.progressBar);
     }
 
@@ -56,7 +64,6 @@ public class HistoryActivity extends AppCompatActivity {
         progressBar.setProgress(statistics.getAnsweredQuestions());
 
         // Display appropriate message based on progress
-        TextView messageText = findViewById(R.id.messageText);
         if (percentage == 100) {
             messageText.setText(R.string.history_complete);
         } else if (percentage >= 50) {

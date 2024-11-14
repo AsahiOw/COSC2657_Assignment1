@@ -1,5 +1,6 @@
 package com.example.colormixingquiz.View.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +48,7 @@ public class ResultsActivity extends AppCompatActivity {
         homeButton = findViewById(R.id.homeButton);
     }
 
+    @SuppressLint("DefaultLocale")
     private void displayResults() {
         // Display score fraction
         scoreText.setText(String.format("%d/%d", correctAnswers, totalQuestions));

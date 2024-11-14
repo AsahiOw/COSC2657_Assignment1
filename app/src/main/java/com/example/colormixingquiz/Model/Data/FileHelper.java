@@ -46,20 +46,6 @@ public class FileHelper {
         }
     }
 
-    private void copyFromAssetsToInternal() throws IOException {
-        try {
-            String jsonContent = readJsonFromAssets();
-            File file = new File(context.getFilesDir(), fileName);
-            try (FileWriter writer = new FileWriter(file)) {
-                writer.write(jsonContent);
-            }
-            Log.d(TAG, "Successfully copied JSON from assets to internal storage");
-        } catch (IOException e) {
-            Log.e(TAG, "Error copying JSON to internal storage: " + e.getMessage());
-            throw e;
-        }
-    }
-
     public void writeJsonToInternal(String jsonContent) throws IOException {
         File file = new File(context.getFilesDir(), fileName);
         try (FileWriter writer = new FileWriter(file)) {

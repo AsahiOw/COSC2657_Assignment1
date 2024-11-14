@@ -5,7 +5,6 @@ import com.example.colormixingquiz.Model.Data.Question;
 import com.example.colormixingquiz.Model.Repository.QuestionRepository;
 import com.example.colormixingquiz.View.Fragment.GamePreferences;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -170,25 +169,12 @@ public class GameController {
         return currentGameQuestions.size();
     }
 
-    public int getCurrentQuestionIndex() {
-        return currentQuestionIndex;
-    }
-
     public boolean hasUnansweredQuestions() {
         return !repository.getUnansweredQuestions().isEmpty();
     }
 
-    public boolean isGameInProgress() {
-        return gameInProgress;
-    }
-
     public void endGame() {
         gameInProgress = false;
-        GamePreferences.clearGameProgress(mContext);
-    }
-
-    public void resetAllAnswers() {
-        repository.resetAllAnswers();
         GamePreferences.clearGameProgress(mContext);
     }
 
