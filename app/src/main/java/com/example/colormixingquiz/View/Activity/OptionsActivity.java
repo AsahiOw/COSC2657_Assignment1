@@ -4,8 +4,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.Button;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.colormixingquiz.R;
 import com.example.colormixingquiz.Controller.GameController;
@@ -15,7 +13,6 @@ public class OptionsActivity extends AppCompatActivity {
     private ImageButton backButton;
     private SeekBar sfxSlider;
     private SeekBar musicSlider;
-    private Button resetButton;
     private MediaPlayer testSoundPlayer;
     private GameController gameController;
 
@@ -34,7 +31,6 @@ public class OptionsActivity extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         sfxSlider = findViewById(R.id.sfxSlider);
         musicSlider = findViewById(R.id.musicSlider);
-        resetButton = findViewById(R.id.resetButton);
 
         // Set up sliders
         sfxSlider.setMax(100);
@@ -44,15 +40,12 @@ public class OptionsActivity extends AppCompatActivity {
     private void setupClickListeners() {
         backButton.setOnClickListener(v -> finish());
 
-        resetButton.setOnClickListener(v -> showResetConfirmDialog());
-
         sfxSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 float volume = progress / 100f;
                 GamePreferences.saveVolumes(OptionsActivity.this, volume,
                         GamePreferences.getMusicVolume(OptionsActivity.this));
-
                 // Play test sound
                 playTestSound();
             }
@@ -86,28 +79,6 @@ public class OptionsActivity extends AppCompatActivity {
 
         sfxSlider.setProgress((int)(sfxVolume * 100));
         musicSlider.setProgress((int)(musicVolume * 100));
-    }
-
-    private void showResetConfirmDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.reset_confirmation_title)
-                .setMessage(R.string.reset_confirmation_message)
-                .setPositiveButton(R.string.yes, (dialog, which) -> {
-                    // Reset all game data
-                    gameController.resetAllAnswers();
-                    GamePreferences.clearGameProgress(this);
-                    showResetSuccessDialog();
-                })
-                .setNegativeButton(R.string.no, null)
-                .show();
-    }
-
-    private void showResetSuccessDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.reset_success_title)
-                .setMessage(R.string.reset_success_message)
-                .setPositiveButton(R.string.ok, null)
-                .show();
     }
 
     private void playTestSound() {
