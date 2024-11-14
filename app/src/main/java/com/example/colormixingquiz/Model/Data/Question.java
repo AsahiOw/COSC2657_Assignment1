@@ -1,6 +1,10 @@
 package com.example.colormixingquiz.Model.Data;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private int id;
     private String firstColor;
     private String secondColor;

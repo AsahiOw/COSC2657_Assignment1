@@ -39,8 +39,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         try {
-            // Initialize game controller
-            gameController = new GameController();
+            // Initialize game controller with context
+            gameController = new GameController(getFilesDir().getAbsolutePath(), this);
 
             // Get game mode from intent
             boolean isNewGame = getIntent().getBooleanExtra("isNewGame", true);
@@ -174,15 +174,14 @@ public class GameActivity extends AppCompatActivity {
             incorrectSound.start();
         }
 
-        // Save progress
-        GamePreferences.saveGameProgress(this,
-                gameController.getCurrentQuestionIndex(),
-                gameController.getCorrectAnswers());
-
         // Wait before loading next question
         new Handler().postDelayed(() -> {
             gameController.nextQuestion();
-            loadQuestion();
+            if (gameController.isGameFinished()) {
+                finishGame();
+            } else {
+                loadQuestion();
+            }
         }, 1000);
     }
 
@@ -191,9 +190,6 @@ public class GameActivity extends AppCompatActivity {
                 .setTitle(R.string.exit_confirmation)
                 .setMessage(R.string.exit_message)
                 .setPositiveButton(R.string.yes, (dialog, which) -> {
-                    GamePreferences.saveGameProgress(this,
-                            gameController.getCurrentQuestionIndex(),
-                            gameController.getCorrectAnswers());
                     finish();
                 })
                 .setNegativeButton(R.string.no, null)
@@ -201,6 +197,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void finishGame() {
+        gameController.endGame();
         Intent intent = new Intent(this, ResultsActivity.class);
         intent.putExtra("correctAnswers", gameController.getCorrectAnswers());
         intent.putExtra("totalQuestions", gameController.getTotalQuestions());
@@ -222,6 +219,7 @@ public class GameActivity extends AppCompatActivity {
         if (backgroundMusic != null && backgroundMusic.isPlaying()) {
             backgroundMusic.pause();
         }
+        gameController.onPause();
     }
 
     @Override

@@ -1,0 +1,604 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "firstColor": "Red",
+      "secondColor": "Blue",
+      "correctMixColor": "Purple"
+    },
+    {
+      "id": 2,
+      "firstColor": "Yellow",
+      "secondColor": "Blue",
+      "correctMixColor": "Green"
+    },
+    {
+      "id": 3,
+      "firstColor": "Red",
+      "secondColor": "Yellow",
+      "correctMixColor": "Orange"
+    },
+    {
+      "id": 4,
+      "firstColor": "Blue",
+      "secondColor": "White",
+      "correctMixColor": "Light Blue"
+    },
+    {
+      "id": 5,
+      "firstColor": "Red",
+      "secondColor": "White",
+      "correctMixColor": "Pink"
+    },
+    {
+      "id": 6,
+      "firstColor": "Yellow",
+      "secondColor": "White",
+      "correctMixColor": "Light Yellow"
+    },
+    {
+      "id": 7,
+      "firstColor": "Blue",
+      "secondColor": "Black",
+      "correctMixColor": "Navy Blue"
+    },
+    {
+      "id": 8,
+      "firstColor": "Red",
+      "secondColor": "Black",
+      "correctMixColor": "Burgundy"
+    },
+    {
+      "id": 9,
+      "firstColor": "Yellow",
+      "secondColor": "Red",
+      "correctMixColor": "Orange"
+    },
+    {
+      "id": 10,
+      "firstColor": "Blue",
+      "secondColor": "Yellow",
+      "correctMixColor": "Green"
+    },
+    {
+      "id": 11,
+      "firstColor": "Purple",
+      "secondColor": "White",
+      "correctMixColor": "Lavender"
+    },
+    {
+      "id": 12,
+      "firstColor": "Orange",
+      "secondColor": "White",
+      "correctMixColor": "Peach"
+    },
+    {
+      "id": 13,
+      "firstColor": "Green",
+      "secondColor": "White",
+      "correctMixColor": "Mint Green"
+    },
+    {
+      "id": 14,
+      "firstColor": "Yellow",
+      "secondColor": "Black",
+      "correctMixColor": "Olive"
+    },
+    {
+      "id": 15,
+      "firstColor": "Purple",
+      "secondColor": "Black",
+      "correctMixColor": "Dark Purple"
+    },
+    {
+      "id": 16,
+      "firstColor": "Green",
+      "secondColor": "Black",
+      "correctMixColor": "Forest Green"
+    },
+    {
+      "id": 17,
+      "firstColor": "Orange",
+      "secondColor": "Black",
+      "correctMixColor": "Brown"
+    },
+    {
+      "id": 18,
+      "firstColor": "Red",
+      "secondColor": "Purple",
+      "correctMixColor": "Magenta"
+    },
+    {
+      "id": 19,
+      "firstColor": "Blue",
+      "secondColor": "Green",
+      "correctMixColor": "Turquoise"
+    },
+    {
+      "id": 20,
+      "firstColor": "Purple",
+      "secondColor": "Orange",
+      "correctMixColor": "Brown"
+    },
+    {
+      "id": 21,
+      "firstColor": "Turquoise",
+      "secondColor": "White",
+      "correctMixColor": "Sky Blue"
+    },
+    {
+      "id": 22,
+      "firstColor": "Brown",
+      "secondColor": "White",
+      "correctMixColor": "Beige"
+    },
+    {
+      "id": 23,
+      "firstColor": "Green",
+      "secondColor": "Yellow",
+      "correctMixColor": "Lime Green"
+    },
+    {
+      "id": 24,
+      "firstColor": "Red",
+      "secondColor": "Brown",
+      "correctMixColor": "Maroon"
+    },
+    {
+      "id": 25,
+      "firstColor": "Blue",
+      "secondColor": "Purple",
+      "correctMixColor": "Indigo"
+    },
+    {
+      "id": 26,
+      "firstColor": "Orange",
+      "secondColor": "Yellow",
+      "correctMixColor": "Gold"
+    },
+    {
+      "id": 27,
+      "firstColor": "Turquoise",
+      "secondColor": "Black",
+      "correctMixColor": "Teal"
+    },
+    {
+      "id": 28,
+      "firstColor": "Pink",
+      "secondColor": "Purple",
+      "correctMixColor": "Rose"
+    },
+    {
+      "id": 29,
+      "firstColor": "Green",
+      "secondColor": "Brown",
+      "correctMixColor": "Olive Brown"
+    },
+    {
+      "id": 30,
+      "firstColor": "Blue",
+      "secondColor": "Pink",
+      "correctMixColor": "Periwinkle"
+    },
+    {
+      "id": 31,
+      "firstColor": "Pink",
+      "secondColor": "Orange",
+      "correctMixColor": "Coral"
+    },
+    {
+      "id": 32,
+      "firstColor": "Purple",
+      "secondColor": "Green",
+      "correctMixColor": "Slate"
+    },
+    {
+      "id": 33,
+      "firstColor": "Lavender",
+      "secondColor": "Blue",
+      "correctMixColor": "Powder Blue"
+    },
+    {
+      "id": 34,
+      "firstColor": "Yellow",
+      "secondColor": "Green",
+      "correctMixColor": "Chartreuse"
+    },
+    {
+      "id": 35,
+      "firstColor": "Pink",
+      "secondColor": "Yellow",
+      "correctMixColor": "Salmon"
+    },
+    {
+      "id": 36,
+      "firstColor": "Red",
+      "secondColor": "Green",
+      "correctMixColor": "Russet Brown"
+    },
+    {
+      "id": 37,
+      "firstColor": "Beige",
+      "secondColor": "Brown",
+      "correctMixColor": "Tan"
+    },
+    {
+      "id": 38,
+      "firstColor": "Blue",
+      "secondColor": "Brown",
+      "correctMixColor": "Steel Blue"
+    },
+    {
+      "id": 39,
+      "firstColor": "Purple",
+      "secondColor": "Brown",
+      "correctMixColor": "Mauve"
+    },
+    {
+      "id": 40,
+      "firstColor": "Blue",
+      "secondColor": "Orange",
+      "correctMixColor": "Slate Gray"
+    },
+    {
+      "id": 41,
+      "firstColor": "Turquoise",
+      "secondColor": "Green",
+      "correctMixColor": "Aqua Green"
+    },
+    {
+      "id": 42,
+      "firstColor": "Rose",
+      "secondColor": "White",
+      "correctMixColor": "Baby Pink"
+    },
+    {
+      "id": 43,
+      "firstColor": "Navy Blue",
+      "secondColor": "White",
+      "correctMixColor": "Cornflower Blue"
+    },
+    {
+      "id": 44,
+      "firstColor": "Burgundy",
+      "secondColor": "White",
+      "correctMixColor": "Rose Pink"
+    },
+    {
+      "id": 45,
+      "firstColor": "Forest Green",
+      "secondColor": "Yellow",
+      "correctMixColor": "Apple Green"
+    },
+    {
+      "id": 46,
+      "firstColor": "Indigo",
+      "secondColor": "White",
+      "correctMixColor": "Periwinkle Blue"
+    },
+    {
+      "id": 47,
+      "firstColor": "Orange",
+      "secondColor": "Purple",
+      "correctMixColor": "Russet"
+    },
+    {
+      "id": 48,
+      "firstColor": "Teal",
+      "secondColor": "Blue",
+      "correctMixColor": "Peacock Blue"
+    },
+    {
+      "id": 49,
+      "firstColor": "Maroon",
+      "secondColor": "Black",
+      "correctMixColor": "Dark Maroon"
+    },
+    {
+      "id": 50,
+      "firstColor": "Gold",
+      "secondColor": "Brown",
+      "correctMixColor": "Bronze"
+    },
+    {
+      "id": 51,
+      "firstColor": "Lavender",
+      "secondColor": "Pink",
+      "correctMixColor": "Light Orchid"
+    },
+    {
+      "id": 52,
+      "firstColor": "Mint Green",
+      "secondColor": "Blue",
+      "correctMixColor": "Seafoam"
+    },
+    {
+      "id": 53,
+      "firstColor": "Coral",
+      "secondColor": "White",
+      "correctMixColor": "Peach Pink"
+    },
+    {
+      "id": 54,
+      "firstColor": "Navy Blue",
+      "secondColor": "Purple",
+      "correctMixColor": "Royal Purple"
+    },
+    {
+      "id": 55,
+      "firstColor": "Olive",
+      "secondColor": "Brown",
+      "correctMixColor": "Khaki"
+    },
+    {
+      "id": 56,
+      "firstColor": "Turquoise",
+      "secondColor": "Purple",
+      "correctMixColor": "Iris Blue"
+    },
+    {
+      "id": 57,
+      "firstColor": "Forest Green",
+      "secondColor": "Blue",
+      "correctMixColor": "Pine Green"
+    },
+    {
+      "id": 58,
+      "firstColor": "Magenta",
+      "secondColor": "Blue",
+      "correctMixColor": "Deep Purple"
+    },
+    {
+      "id": 59,
+      "firstColor": "Orange",
+      "secondColor": "Green",
+      "correctMixColor": "Olive Green"
+    },
+    {
+      "id": 60,
+      "firstColor": "Pink",
+      "secondColor": "Brown",
+      "correctMixColor": "Dusty Rose"
+    },
+    {
+      "id": 61,
+      "firstColor": "Seafoam",
+      "secondColor": "White",
+      "correctMixColor": "Mint Cream"
+    },
+    {
+      "id": 62,
+      "firstColor": "Slate Gray",
+      "secondColor": "Blue",
+      "correctMixColor": "Blue Gray"
+    },
+    {
+      "id": 63,
+      "firstColor": "Peach",
+      "secondColor": "Pink",
+      "correctMixColor": "Light Coral"
+    },
+    {
+      "id": 64,
+      "firstColor": "Forest Green",
+      "secondColor": "White",
+      "correctMixColor": "Sage"
+    },
+    {
+      "id": 65,
+      "firstColor": "Royal Purple",
+      "secondColor": "Pink",
+      "correctMixColor": "Orchid"
+    },
+    {
+      "id": 66,
+      "firstColor": "Turquoise",
+      "secondColor": "Yellow",
+      "correctMixColor": "Spring Green"
+    },
+    {
+      "id": 67,
+      "firstColor": "Navy Blue",
+      "secondColor": "Green",
+      "correctMixColor": "Deep Teal"
+    },
+    {
+      "id": 68,
+      "firstColor": "Maroon",
+      "secondColor": "Purple",
+      "correctMixColor": "Plum"
+    },
+    {
+      "id": 69,
+      "firstColor": "Coral",
+      "secondColor": "Orange",
+      "correctMixColor": "Tangerine"
+    },
+    {
+      "id": 70,
+      "firstColor": "Slate",
+      "secondColor": "White",
+      "correctMixColor": "Silver"
+    },
+    {
+      "id": 71,
+      "firstColor": "Rose",
+      "secondColor": "Purple",
+      "correctMixColor": "Fuchsia"
+    },
+    {
+      "id": 72,
+      "firstColor": "Lime Green",
+      "secondColor": "White",
+      "correctMixColor": "Honeydew"
+    },
+    {
+      "id": 73,
+      "firstColor": "Steel Blue",
+      "secondColor": "Gray",
+      "correctMixColor": "Pewter"
+    },
+    {
+      "id": 74,
+      "firstColor": "Burgundy",
+      "secondColor": "Brown",
+      "correctMixColor": "Mahogany"
+    },
+    {
+      "id": 75,
+      "firstColor": "Teal",
+      "secondColor": "Green",
+      "correctMixColor": "Viridian"
+    },
+    {
+      "id": 76,
+      "firstColor": "Indigo",
+      "secondColor": "Black",
+      "correctMixColor": "Midnight Blue"
+    },
+    {
+      "id": 77,
+      "firstColor": "Gold",
+      "secondColor": "Orange",
+      "correctMixColor": "Amber"
+    },
+    {
+      "id": 78,
+      "firstColor": "Mauve",
+      "secondColor": "Pink",
+      "correctMixColor": "Old Rose"
+    },
+    {
+      "id": 79,
+      "firstColor": "Forest Green",
+      "secondColor": "Brown",
+      "correctMixColor": "Hunter Green"
+    },
+    {
+      "id": 80,
+      "firstColor": "Periwinkle",
+      "secondColor": "White",
+      "correctMixColor": "Alice Blue"
+    },
+    {
+      "id": 81,
+      "firstColor": "Russet",
+      "secondColor": "Black",
+      "correctMixColor": "Coffee"
+    },
+    {
+      "id": 82,
+      "firstColor": "Chartreuse",
+      "secondColor": "White",
+      "correctMixColor": "Light Lime"
+    },
+    {
+      "id": 83,
+      "firstColor": "Navy Blue",
+      "secondColor": "Gray",
+      "correctMixColor": "Dark Slate"
+    },
+    {
+      "id": 84,
+      "firstColor": "Magenta",
+      "secondColor": "Purple",
+      "correctMixColor": "Deep Pink"
+    },
+    {
+      "id": 85,
+      "firstColor": "Olive Green",
+      "secondColor": "Brown",
+      "correctMixColor": "Moss Green"
+    },
+    {
+      "id": 86,
+      "firstColor": "Turquoise",
+      "secondColor": "Gray",
+      "correctMixColor": "Cadet Blue"
+    },
+    {
+      "id": 87,
+      "firstColor": "Coral",
+      "secondColor": "Brown",
+      "correctMixColor": "Terra Cotta"
+    },
+    {
+      "id": 88,
+      "firstColor": "Lavender",
+      "secondColor": "Gray",
+      "correctMixColor": "Thistle"
+    },
+    {
+      "id": 89,
+      "firstColor": "Maroon",
+      "secondColor": "Blue",
+      "correctMixColor": "Wine"
+    },
+    {
+      "id": 90,
+      "firstColor": "Peach",
+      "secondColor": "Brown",
+      "correctMixColor": "Tan Pink"
+    },
+    {
+      "id": 91,
+      "firstColor": "Royal Purple",
+      "secondColor": "Black",
+      "correctMixColor": "Dark Royal Purple"
+    },
+    {
+      "id": 92,
+      "firstColor": "Pine Green",
+      "secondColor": "White",
+      "correctMixColor": "Sea Green"
+    },
+    {
+      "id": 93,
+      "firstColor": "Salmon",
+      "secondColor": "Pink",
+      "correctMixColor": "Light Salmon"
+    },
+    {
+      "id": 94,
+      "firstColor": "Steel Blue",
+      "secondColor": "White",
+      "correctMixColor": "Light Steel Blue"
+    },
+    {
+      "id": 95,
+      "firstColor": "Khaki",
+      "secondColor": "White",
+      "correctMixColor": "Light Khaki"
+    },
+    {
+      "id": 96,
+      "firstColor": "Plum",
+      "secondColor": "White",
+      "correctMixColor": "Light Plum"
+    },
+    {
+      "id": 97,
+      "firstColor": "Bronze",
+      "secondColor": "Brown",
+      "correctMixColor": "Copper"
+    },
+    {
+      "id": 98,
+      "firstColor": "Iris Blue",
+      "secondColor": "White",
+      "correctMixColor": "Light Iris"
+    },
+    {
+      "id": 99,
+      "firstColor": "Russet Brown",
+      "secondColor": "Black",
+      "correctMixColor": "Dark Russet"
+    },
+    {
+      "id": 100,
+      "firstColor": "Deep Purple",
+      "secondColor": "White",
+      "correctMixColor": "Amethyst"
+    }
+  ]
+}
