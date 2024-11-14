@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">Color Mixing Quiz</string>
+
+    <!-- Main Activity strings -->
+    <string name="play">Play</string>
+    <string name="options">Options</string>
+    <string name="select_game_mode">Select Game Mode</string>
+    <string name="new_game">New Game</string>
+    <string name="continue_game">Continue</string>
+    <string name="select_questions">Select Questions</string>
+    <string name="all_questions">All Questions</string>
+    <string name="unanswered_questions">Unanswered Questions</string>
+    <string name="back">Back</string>
+
+    <!-- Game Activity strings -->
+    <string name="question_format">What does %s mix with %s become?</string>
+    <string name="exit_confirmation">Exit Game</string>
+    <string name="exit_message">Your progress will be saved. Are you sure you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Results Activity strings -->
+    <string name="congratulations">Congratulations!</string>
+    <string name="excellent_score">Excellent Job!</string>
+    <string name="good_score">Good Job!</string>
+    <string name="keep_practicing">Keep Practicing!</string>
+    <string name="total_questions_format">You attempted %d questions</string>
+    <string name="percentage_format">%.1f%%</string>
+    <string name="retry">Retry</string>
+    <string name="back_to_home">Back to Home</string>
+
+    <!-- Options Activity strings -->
+    <string name="sfx_volume">SFX Volume</string>
+    <string name="music_volume">Music Volume</string>
+    <string name="reset_game">Reset Game</string>
+    <string name="reset_confirmation_title">Reset Game Data</string>
+    <string name="reset_confirmation_message">All the data will be reset to default. Are you sure you want to continue?</string>
+    <string name="reset_success_title">Reset Complete</string>
+    <string name="reset_success_message">All game data has been reset successfully.</string>
+    <string name="ok">OK</string>
+
+    <!-- History Activity strings -->
+    <string name="history">History</string>
+    <string name="stats_format">%d/%d Questions Answered</string>
+    <string name="history_complete">Congratulations! You\'ve completed all questions!</string>
+    <string name="history_good_progress">Good progress! Keep going!</string>
+    <string name="history_keep_going">You\'re just getting started. Keep practicing!</string>
+
+    <!-- Colors -->
+    <color name="button_normal">#FF2196F3</color>
+    <color name="correct_answer">#FF4CAF50</color>
+    <color name="wrong_answer">#FFF44336</color>
+    <color name="progress_color">#2196F3</color>
+    <color name="progress_background">#DDDDDD</color>
+    <color name="score_color">#2196F3</color>
+    <color name="option_label_color">#333333</color>
+
+    <!-- Error messages -->
+    <string name="error_no_questions">No questions available to start the game</string>
+    <string name="error_resume_game">Unable to resume previous game</string>
+    <string name="error_general">An unexpected error occurred</string>
+    <string name="error_invalid_answers">Invalid answer options generated</string>
+    <string name="error_loading_question">Error loading question</string>
+
+</resources>
