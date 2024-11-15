@@ -6,35 +6,28 @@
     android:viewportHeight="200">
 
     <!-- Background circle -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M100,100m-90,0a90,90 0,1 1,180 0a90,90 0,1 1,-180 0"
-        android:strokeWidth="4"
-        android:strokeColor="#000000"/>
+<!--    <path-->
+<!--        android:fillColor="#FFFFFF"-->
+<!--        android:pathData="M100,100m-90,0a90,90 0,1 1,180 0a90,90 0,1 1,-180 0"-->
+<!--        android:strokeWidth="4"-->
+<!--        android:strokeColor="#000000"/>-->
 
     <!-- Red circle -->
     <path
         android:fillColor="#FF0000"
         android:fillAlpha="0.7"
-        android:pathData="M80,70m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
+        android:pathData="M80,90m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
 
     <!-- Blue circle -->
     <path
         android:fillColor="#0000FF"
         android:fillAlpha="0.7"
-        android:pathData="M120,70m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
+        android:pathData="M120,90m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
 
     <!-- Yellow circle -->
     <path
         android:fillColor="#FFFF00"
         android:fillAlpha="0.7"
-        android:pathData="M100,110m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
+        android:pathData="M100,130m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
 
-    <!-- Text "Color Mix" -->
-    <path
-        android:fillColor="#000000"
-        android:pathData="M60,160h80v20h-80z"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:text="Color Mix"/>
 </vector>
