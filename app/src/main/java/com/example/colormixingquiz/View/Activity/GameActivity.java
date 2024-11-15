@@ -185,6 +185,8 @@ public class GameActivity extends AppCompatActivity {
 
         String selectedAnswer = selectedButton.getText().toString();
         boolean isCorrect = gameController.checkAnswer(selectedAnswer);
+        Question currentQuestion = gameController.getCurrentQuestion();
+        String correctAnswer = currentQuestion.getCorrectMixColor();
 
         // Play sound immediately
         if (soundsLoaded) {
@@ -192,11 +194,21 @@ public class GameActivity extends AppCompatActivity {
             soundPool.play(soundId, sfxVolume, sfxVolume, 1, 0, 1.0f);
         }
 
-        // Change button color
-        int color = isCorrect ?
-                getResources().getColor(R.color.correct_answer, null) :
-                getResources().getColor(R.color.wrong_answer, null);
-        selectedButton.setBackgroundColor(color);
+        if (isCorrect) {
+            // If correct, just highlight the selected button in green
+            selectedButton.setBackgroundColor(getResources().getColor(R.color.correct_answer, null));
+        } else {
+            // If wrong, highlight selected button in red and find & highlight correct answer in green
+            selectedButton.setBackgroundColor(getResources().getColor(R.color.wrong_answer, null));
+
+            // Find and highlight the correct answer button
+            for (Button button : answerButtons) {
+                if (button.getText().toString().equals(correctAnswer)) {
+                    button.setBackgroundColor(getResources().getColor(R.color.correct_answer, null));
+                    break;
+                }
+            }
+        }
 
         // Move to next question after delay
         new Handler().postDelayed(() -> {
@@ -206,7 +218,7 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 loadQuestion();
             }
-        }, 750); // Reduced delay for better responsiveness
+        }, 1500); // Delay 1.5s
     }
 
     private void showExitConfirmDialog() {
