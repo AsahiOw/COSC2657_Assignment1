@@ -25,10 +25,10 @@ public class HistoryActivity extends AppCompatActivity {
         setupClickListeners();
     }
 
+    // To get the latest statistics data from the game
     @Override
     protected void onResume() {
         super.onResume();
-        // Create a new GameController instance to ensure fresh data
         gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         displayStatistics();
     }

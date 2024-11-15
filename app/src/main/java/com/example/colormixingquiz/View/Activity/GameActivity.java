@@ -2,6 +2,8 @@ package com.example.colormixingquiz.View.Activity;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.media.AudioAttributes;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -27,11 +29,15 @@ public class GameActivity extends AppCompatActivity {
     private TextView questionText;
     private Button[] answerButtons;
     private GameController gameController;
-    private MediaPlayer correctSound;
-    private MediaPlayer incorrectSound;
+
+    // Audio components
+    private SoundPool soundPool;
+    private int correctSoundId;
+    private int incorrectSoundId;
     private MediaPlayer backgroundMusic;
     private float sfxVolume;
     private float musicVolume;
+    private boolean soundsLoaded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +53,8 @@ public class GameActivity extends AppCompatActivity {
             boolean onlyUnanswered = getIntent().getBooleanExtra("onlyUnanswered", false);
 
             initializeViews();
-            setupClickListeners();
             initializeAudio();
+            setupClickListeners();
 
             if (isNewGame) {
                 try {
@@ -95,6 +101,39 @@ public class GameActivity extends AppCompatActivity {
         answerButtons[3] = findViewById(R.id.answerButton4);
     }
 
+    private void initializeAudio() {
+        // Initialize SoundPool with proper attributes
+        AudioAttributes attributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(2)
+                .setAudioAttributes(attributes)
+                .build();
+
+        // Load sound effects
+        correctSoundId = soundPool.load(this, R.raw.correct, 1);
+        incorrectSoundId = soundPool.load(this, R.raw.incorrect, 1);
+
+        // Set up background music
+        backgroundMusic = MediaPlayer.create(this, R.raw.game_music);
+
+        // Load volumes from preferences
+        sfxVolume = GamePreferences.getSfxVolume(this);
+        musicVolume = GamePreferences.getMusicVolume(this);
+
+        // Set up background music properties
+        backgroundMusic.setVolume(musicVolume, musicVolume);
+        backgroundMusic.setLooping(true);
+
+        // Set up sound loading callback
+        soundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
+            soundsLoaded = true;
+        });
+    }
+
     private void setupClickListeners() {
         backButton.setOnClickListener(v -> showExitConfirmDialog());
         finishButton.setOnClickListener(v -> finishGame());
@@ -102,21 +141,6 @@ public class GameActivity extends AppCompatActivity {
         for (Button button : answerButtons) {
             button.setOnClickListener(v -> handleAnswer((Button) v));
         }
-    }
-
-    private void initializeAudio() {
-        correctSound = MediaPlayer.create(this, R.raw.correct);
-        incorrectSound = MediaPlayer.create(this, R.raw.incorrect);
-        backgroundMusic = MediaPlayer.create(this, R.raw.game_music);
-
-        sfxVolume = GamePreferences.getSfxVolume(this);
-        musicVolume = GamePreferences.getMusicVolume(this);
-
-        correctSound.setVolume(sfxVolume, sfxVolume);
-        incorrectSound.setVolume(sfxVolume, sfxVolume);
-        backgroundMusic.setVolume(musicVolume, musicVolume);
-
-        backgroundMusic.setLooping(true);
     }
 
     private void loadQuestion() {
@@ -141,6 +165,7 @@ public class GameActivity extends AppCompatActivity {
                 return;
             }
 
+            // Set up answer buttons
             for (int i = 0; i < answerButtons.length; i++) {
                 answerButtons[i].setText(answers.get(i));
                 answerButtons[i].setBackgroundColor(getResources().getColor(R.color.button_normal, null));
@@ -153,28 +178,38 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void handleAnswer(Button selectedButton) {
-        // Disable all buttons to prevent multiple answers
+        // Disable all buttons immediately
         for (Button button : answerButtons) {
             button.setEnabled(false);
         }
 
         String selectedAnswer = selectedButton.getText().toString();
         boolean isCorrect = gameController.checkAnswer(selectedAnswer);
+        Question currentQuestion = gameController.getCurrentQuestion();
+        String correctAnswer = currentQuestion.getCorrectMixColor();
 
-        // Change button color based on answer
-        int color = isCorrect ?
-                getResources().getColor(R.color.correct_answer, null) :
-                getResources().getColor(R.color.wrong_answer, null);
-        selectedButton.setBackgroundColor(color);
-
-        // Play appropriate sound
-        if (isCorrect) {
-            correctSound.start();
-        } else {
-            incorrectSound.start();
+        // Play sound
+        if (soundsLoaded) {
+            int soundId = isCorrect ? correctSoundId : incorrectSoundId;
+            soundPool.play(soundId, sfxVolume, sfxVolume, 1, 0, 1.0f);
         }
 
-        // Wait before loading next question
+        if (isCorrect) {
+            // If correct, just highlight the selected button in green
+            selectedButton.setBackgroundColor(getResources().getColor(R.color.correct_answer, null));
+        } else {
+            // If wrong, highlight selected button in red and find & highlight correct answer in green
+            selectedButton.setBackgroundColor(getResources().getColor(R.color.wrong_answer, null));
+            // Find and highlight the correct answer button
+            for (Button button : answerButtons) {
+                if (button.getText().toString().equals(correctAnswer)) {
+                    button.setBackgroundColor(getResources().getColor(R.color.correct_answer, null));
+                    break;
+                }
+            }
+        }
+
+        // Move to next question after delay
         new Handler().postDelayed(() -> {
             gameController.nextQuestion();
             if (gameController.isGameFinished()) {
@@ -182,8 +217,9 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 loadQuestion();
             }
-        }, 1000);
+        }, 1500); // Delay 1.5s
     }
+
 
     private void showExitConfirmDialog() {
         new AlertDialog.Builder(this)
@@ -208,7 +244,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (backgroundMusic != null) {
+        if (backgroundMusic != null && !backgroundMusic.isPlaying()) {
             backgroundMusic.start();
         }
     }
@@ -225,14 +261,13 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         try {
-            if (correctSound != null) {
-                correctSound.release();
-            }
-            if (incorrectSound != null) {
-                incorrectSound.release();
+            if (soundPool != null) {
+                soundPool.release();
+                soundPool = null;
             }
             if (backgroundMusic != null) {
                 backgroundMusic.release();
+                backgroundMusic = null;
             }
         } catch (Exception e) {
             Log.e(TAG, "Error in onDestroy: " + e.getMessage());

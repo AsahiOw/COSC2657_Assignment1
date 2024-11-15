@@ -3,14 +3,13 @@ package com.example.colormixingquiz.Model.Data;
 import java.io.Serializable;
 
 public class Question implements Serializable {
-    private static final long serialVersionUID = 1L;
-
     private int id;
     private String firstColor;
     private String secondColor;
     private String correctMixColor;
     private boolean answered;
 
+    // Constructor
     public Question(int id, String firstColor, String secondColor, String correctMixColor) {
         this.id = id;
         this.firstColor = firstColor;

@@ -6,7 +6,6 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.colormixingquiz.R;
-import com.example.colormixingquiz.Controller.GameController;
 import com.example.colormixingquiz.View.Fragment.GamePreferences;
 
 public class OptionsActivity extends AppCompatActivity {
@@ -14,14 +13,12 @@ public class OptionsActivity extends AppCompatActivity {
     private SeekBar sfxSlider;
     private SeekBar musicSlider;
     private MediaPlayer testSoundPlayer;
-    private GameController gameController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        gameController = new GameController(getFilesDir().getAbsolutePath(), this);
         initializeViews();
         setupClickListeners();
         loadCurrentSettings();
