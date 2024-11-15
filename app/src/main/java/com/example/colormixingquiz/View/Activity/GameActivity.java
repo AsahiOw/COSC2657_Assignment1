@@ -188,7 +188,7 @@ public class GameActivity extends AppCompatActivity {
         Question currentQuestion = gameController.getCurrentQuestion();
         String correctAnswer = currentQuestion.getCorrectMixColor();
 
-        // Play sound immediately
+        // Play sound
         if (soundsLoaded) {
             int soundId = isCorrect ? correctSoundId : incorrectSoundId;
             soundPool.play(soundId, sfxVolume, sfxVolume, 1, 0, 1.0f);
@@ -200,7 +200,6 @@ public class GameActivity extends AppCompatActivity {
         } else {
             // If wrong, highlight selected button in red and find & highlight correct answer in green
             selectedButton.setBackgroundColor(getResources().getColor(R.color.wrong_answer, null));
-
             // Find and highlight the correct answer button
             for (Button button : answerButtons) {
                 if (button.getText().toString().equals(correctAnswer)) {
@@ -220,6 +219,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }, 1500); // Delay 1.5s
     }
+
 
     private void showExitConfirmDialog() {
         new AlertDialog.Builder(this)
